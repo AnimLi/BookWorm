@@ -1,17 +1,33 @@
+// Import Express, a minimal web framework for Node.js
 import express from 'express';
+
+// Import dotenv for managing environment variables
 import "dotenv/config";
-import authRoutes from './routes/authRoutes.js'; // Import the auth routes
+
+// Import authentication-related routes from the authRoutes file
+import authRoutes from './routes/authRoutes.js'; 
+
+// Import the function to connect to the database
 import { connectDB } from './lib/db.js';
 
+// Initialize an Express application instance
 const app = express();
-const PORT = process.env.PORT || 3000; // Default to 3000 if PORT is not set
 
-//console.log({ PORT }); // Check if PORT is set
-app.use("/api/auth",authRoutes)
+// Define the server's port, using the value from environment variables or defaulting to 3000
+const PORT = process.env.PORT || 3000; 
 
+app.use(express.json()); // Middleware to parse JSON request bodies
 
+// Use the authentication routes under the `/api/auth` endpoint
+app.use("/api/auth", authRoutes);
+
+// Start the Express server and listen on the defined port
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-  connectDB(); // Connect to the database when the server starts
-  console.log("Database connected successfully !!!")
+    console.log(`Server is running on port ${PORT}`);
+
+    // Connect to the database when the server starts
+    connectDB();
+
+    // Log a message when the database connection function is called
+    console.log("Database connected successfully !!!");
 });
