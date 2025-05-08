@@ -2,27 +2,29 @@ import mongoose from 'mongoose';
 import bcrypt from 'bcryptjs';
 
 const userSchema = new mongoose.Schema({
-    username:{
-        type:String,
-        required:true,
-        unique:true,
-    },
-    email:{
-        type:String,
-        required:true,
-        unique:true,
-    },
-    password:{
-        type:String,
-        required:true,
-        minlength:6,
+        username:{
+            type:String,
+            required:true,
+            unique:true,
+        },
+        email:{
+            type:String,
+            required:true,
+            unique:true,
+        },
+        password:{
+            type:String,
+            required:true,
+            minlength:6,
 
-    },
-    profileImage:{
-        type:String,
-        default:"",
-    },
-});
+        },
+        profileImage:{
+            type:String,
+            default:"",
+        },
+    }, 
+    {timestamps:true}//timestamps will add createdAt and updatedAt fields
+);
 
 // hash password before saving user to database
 userSchema.pre("save", async function(next) {
@@ -35,6 +37,11 @@ userSchema.pre("save", async function(next) {
     
     next();
 });
+
+//compare password function
+userSchema.methods.comparePassword = async function(userdPassword) {
+    return await bcrypt.compare(userdPassword, this.password);
+};
 
 const User = mongoose.model("User", userSchema);
 //users collection

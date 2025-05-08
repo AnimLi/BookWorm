@@ -72,10 +72,44 @@ router.post('/register', async (req, res) => {
     }
 });
 
-// Handle user login via POST request
+// Handle user login via POST request 
 router.post('/login', async (req, res) => {
-    // Implement login logic here (e.g., checking credentials)
-    res.send("login"); // Fixed typo: Changed 'sned' to 'send'
+    try {
+        const { email, password } = req.body; // Destructure email and password from request body
+        
+        if (!email || !password) {
+            return res.status(400).json({ message: "Please fill all the fields" });
+        }
+
+        //check if user exists
+        const user = await User.findOne({ email }); // Find user by email
+        if (!user) {
+            return res.status(400).json({ message: "User does not exist" });
+        }
+
+        //check if password is correct
+        const isPasswordCorrect = await user.comparePassword(password); // Compare password with hashed password
+        if (!isPasswordCorrect) {
+            return res.status(400).json({ message: "Invalid credentials" });
+        }
+
+        //generate token
+        const token = generateToken(user._id); // Generate a token for the user 
+
+        res.status(200).json({
+            token,
+            user: {
+                _id: user._id,
+                username: user.username,
+                email: user.email,
+                profileImage: user.profileImage,
+            },
+        });
+
+    } catch (error) {
+        console.error("Error in login route",error); // Log the error for debugging
+        res.status(500).json({ message: "Internal server error" }); // Send a 500 status code for server errors
+    }
 });
 
 // Export the router for use in other parts of the application
