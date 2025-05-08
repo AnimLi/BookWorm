@@ -4,8 +4,8 @@ import express from 'express';
 // Import dotenv for managing environment variables
 import "dotenv/config";
 
-// Import authentication-related routes from the authRoutes file
-import authRoutes from './routes/authRoutes.js'; 
+import authRoutes from './routes/authRoutes.js'; // Import authentication-related routes from the authRoutes file
+import bookRoutes from './routes/bookRoutes.js'; // Import book-related routes
 
 // Import the function to connect to the database
 import { connectDB } from './lib/db.js';
@@ -20,6 +20,7 @@ app.use(express.json()); // Middleware to parse JSON request bodies
 
 // Use the authentication routes under the `/api/auth` endpoint
 app.use("/api/auth", authRoutes);
+app.use("/api/books", bookRoutes);
 
 // Start the Express server and listen on the defined port
 app.listen(PORT, () => {
