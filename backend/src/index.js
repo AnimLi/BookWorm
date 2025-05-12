@@ -1,6 +1,8 @@
 // Import Express, a minimal web framework for Node.js
 import express from 'express';
 
+import cors from 'cors'; // Import CORS middleware for handling cross-origin requests
+
 // Import dotenv for managing environment variables
 import "dotenv/config";
 
@@ -17,6 +19,7 @@ const app = express();
 const PORT = process.env.PORT || 3000; 
 
 app.use(express.json()); // Middleware to parse JSON request bodies
+app.use(cors()); // Enable CORS for all routes
 
 // Use the authentication routes under the `/api/auth` endpoint
 app.use("/api/auth", authRoutes);
