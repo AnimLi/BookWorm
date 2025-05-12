@@ -37,4 +37,32 @@ router.post("/", protectRoute, async (req, res) => {
     }
 });
 
+//get all books, pagination => infinite loading
+router.post("/", protectRoute, async (req, res) => {
+    try {
+        const page = req.query.page || 1; // Get the page number from the query parameters
+        const limit = req.query.limit || 5; // Number of books per page
+        const skip = (page - 1) * limit; // Calculate the number of books to skip
+
+        const books = await Book.find()
+        .sort ({ createdAt: -1 }) //descending order
+        .skip(skip) // Skip the books for pagination
+        .limit(limit) // Limit the number of books returned
+        .poplulate("user", "username profileImage"); // Populate the user field with user data
+
+        const totalBooks = await Book.countDocuments(); // Get the total number of books
+
+        res.send({
+            books,
+            currentPage,
+            totalBooks: await Book.countDocuments(), // Get the total number of books
+            totalPages: Math.ceil(totalBooks / limit), // Calculate the total number of pages
+        });
+
+    } catch (error) {
+        console.error('Error in get all books route:', error);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+});
+
 export default router;
