@@ -1,4 +1,5 @@
-import { View, Text, Image, TextInput, TouchableOpacity, ActivityIndicator, KeyboardAvoidingView, } from "react-native";
+{/* Login Screen */}
+import { View, Text, Image, TextInput, Platform, TouchableOpacity, ActivityIndicator, KeyboardAvoidingView, } from "react-native";
 import { Link } from "expo-router";
 import styles from "../../assets/styles/login.styles";
 import { useState } from "react";
@@ -20,7 +21,7 @@ export default function Login(){
         >
 
         <View style={styles.container}>
-            {/* Login Screen */}
+            
             {/* illustration */}
             <View style={styles.topIllustration}>
                 <Image 
