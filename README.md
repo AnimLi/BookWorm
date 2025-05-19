@@ -12,9 +12,12 @@ npm i express mongoose dotenv jsonwebtoken cloudinary bcryptjs cors
   2.1 choose 'no' (delete the boilerplate code)
 3.npx expo
 4.npx expo install expo-image
-(*** first time need ***)
+(*** first time need ***
 
 Usually, ...
 1.npx expo -> launch simulator (Web / Andriod / IOS) 
 2.npx expo install expo-image
-3.npm install
+3.npm i zustand
+
+npm install
+
