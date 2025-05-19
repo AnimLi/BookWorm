@@ -1,4 +1,4 @@
-{/* Login Screen */}
+/* Login Screen */
 import { View, Text, Image, TextInput, Platform, TouchableOpacity, ActivityIndicator, KeyboardAvoidingView, } from "react-native";
 import { Link } from "expo-router";
 import styles from "../../assets/styles/login.styles";
