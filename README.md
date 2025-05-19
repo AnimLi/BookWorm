@@ -18,6 +18,6 @@ Usually, ...
 1.npx expo -> launch simulator (Web / Andriod / IOS) 
 2.npx expo install expo-image
 3.npm i zustand
-
+4.npm i @react-native-async-storage/async-storage
 npm install
 
