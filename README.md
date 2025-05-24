@@ -3,6 +3,7 @@ BookWorm mobile app
 
 //Backend
 npm i express mongoose dotenv jsonwebtoken cloudinary bcryptjs cors
+npm i cron
 
 //Frontend
 
