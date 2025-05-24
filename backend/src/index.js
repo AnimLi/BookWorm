@@ -6,6 +6,8 @@ import cors from 'cors'; // Import CORS middleware for handling cross-origin req
 // Import dotenv for managing environment variables
 import "dotenv/config";
 
+import job from './lib/cron.js'; // Import the cron job for scheduled tasks
+
 import authRoutes from './routes/authRoutes.js'; // Import authentication-related routes from the authRoutes file
 import bookRoutes from './routes/bookRoutes.js'; // Import book-related routes
 
