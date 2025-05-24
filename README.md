@@ -20,5 +20,8 @@ Usually, ...
 2.npx expo install expo-image
 3.npm i zustand
 4.npm i @react-native-async-storage/async-storage
+5.npx expo install expo-image-picker
+6.npx expo install expo-file-system
+
 npm install
 
