@@ -44,7 +44,7 @@ export default function Login(){
 
                     {/*Email*/}
                     <View style={styles.inputGroup}>
-                        <Text style={styles.label}>Email</Text>
+                            <Text style={styles.label}>Email</Text>
                         <View style={styles.inputContainer}>
 
                             {/* Icon on Left */}

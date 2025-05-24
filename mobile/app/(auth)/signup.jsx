@@ -138,7 +138,6 @@ export default function Signup(){
                                 <Text style={styles.link}>Login</Text>
                             </TouchableOpacity>
                         </View>
-                        
                     </View>
                 </View>
             </View>
