@@ -29,7 +29,7 @@ export default function RootLayout() {
   return (
     <SafeAreaProvider>
       <SafeScreen>
-        <Slot/> {/* 确保 Slot 组件正确渲染 */}
+        <Slot />
       </SafeScreen>
       <StatusBar style="dark" />
     </SafeAreaProvider>
