@@ -18,6 +18,7 @@ const app = express();
 // Define the server's port, using the value from environment variables or defaulting to 3000
 const PORT = process.env.PORT || 3000; 
 
+job.start(); // Start the cron job to run at specified intervals
 app.use(express.json()); // Middleware to parse JSON request bodies
 app.use(cors()); // Enable CORS for all routes
 
